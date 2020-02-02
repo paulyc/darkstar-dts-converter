@@ -25,7 +25,7 @@ def readData(structs, rawData, offset, objectHeader, memberName):
     objVersion = str(objectHeader.version)
     className = objectHeader.className.decode("utf-8")
     if objVersion not in structs["structures"][className]["versions"]:
-        raise ValueError(objectHeader.className.decode("utf-8") + " version " + objVersion.decode("utf-8") + " not currently supported")
+        raise ValueError(objectHeader.className.decode("utf-8") + " version " + objVersion + " not currently supported")
 
     ShapeHeaderStruct = structs["structures"][className]["versions"][objVersion]["members"][memberName]
     ShapeHeader = namedtuple(memberName, ShapeHeaderStruct["keys"])
